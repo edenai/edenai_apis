@@ -1,3 +1,4 @@
+from utils.parsing import NoRaiseBaseModel
 import base64
 import importlib
 import uuid
@@ -9,7 +10,7 @@ from pydantic import BaseModel, Field
 # from edenai_apis.utils.upload_s3 import upload_file_bytes_to_s3, USER_PROCESS
 
 
-class BackgroundRemovalDataClass(BaseModel):
+class BackgroundRemovalDataClass(NoRaiseBaseModel):
     """
     The response of the background removal API.
 

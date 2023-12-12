@@ -1,3 +1,4 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Sequence, Union
 
 from pydantic import (
@@ -36,7 +37,7 @@ SubCategoryType = Union[
 ]
 
 
-class ExplicitItem(BaseModel):
+class ExplicitItem(NoRaiseBaseModel):
     label: StrictStr
     likelihood: int
     likelihood_score: float
@@ -50,7 +51,7 @@ class ExplicitItem(BaseModel):
         return value.value
 
 
-class ExplicitContentDataClass(BaseModel):
+class ExplicitContentDataClass(NoRaiseBaseModel):
     nsfw_likelihood: int
     nsfw_likelihood_score: float
     items: Sequence[ExplicitItem] = Field(default_factory=list)

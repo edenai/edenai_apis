@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Dict
 
 from pydantic import BaseModel, StrictStr
 
 
-class TextToSpeechDataClass(BaseModel):
+class TextToSpeechDataClass(NoRaiseBaseModel):
     audio: StrictStr
     voice_type: int
     audio_resource_url: StrictStr

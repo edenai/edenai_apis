@@ -1,6 +1,8 @@
 import logging
 from typing import Any, List, Optional, TypeVar, Union
 
+from pydantic import BaseModel, ValidationError
+
 T = TypeVar("T")
 
 
@@ -55,3 +57,30 @@ def extract(
         return fallback
 
     return result
+
+
+class NoRaiseBaseModel(BaseModel):
+    """
+    Catch ValidationError from pydantic BaseModel,
+    set the invalid fields at `None` and log the error instead of raising it
+    """
+
+    __pydantic_extra__ = None
+    __pydantic_private__ = None
+
+    def __init__(self, **data: Any) -> None:
+        try:
+            super().__init__(**data)
+        except ValidationError as pve:
+            for error in pve.errors():
+                name = str(error["loc"][0])
+                logging.error(
+                    "Pydantic ValidationError in %s: %s",
+                    str(self.__class__.__qualname__),
+                    str(error),
+                )
+                data[name] = None
+
+            fields_set = set(data.keys())
+            for key, value in self.model_construct(fields_set, **data).__dict__.items():
+                self.__dict__[key] = value

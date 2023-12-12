@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Dict, Optional, Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class Bounding_box(BaseModel):
+class Bounding_box(NoRaiseBaseModel):
     text: Optional[StrictStr]
     left: Optional[float]
     top: Optional[float]
@@ -11,7 +12,7 @@ class Bounding_box(BaseModel):
     height: Optional[float]
 
 
-class OcrDataClass(BaseModel):
+class OcrDataClass(NoRaiseBaseModel):
     text: StrictStr
     bounding_boxes: Sequence[Bounding_box] = Field(default_factory=list)
 

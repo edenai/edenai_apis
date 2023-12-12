@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence, List
 
 from pydantic import BaseModel, Field
 
 
-class SuggestionItem(BaseModel):
+class SuggestionItem(NoRaiseBaseModel):
     """
     Represents a suggestion for a misspelled word.
 
@@ -22,7 +23,7 @@ class SuggestionItem(BaseModel):
     score: Optional[float] = Field(ge=0, le=1)
 
 
-class SpellCheckItem(BaseModel):
+class SpellCheckItem(NoRaiseBaseModel):
     """Represents a spell check item with suggestions.
 
     Args:
@@ -46,7 +47,7 @@ class SpellCheckItem(BaseModel):
     suggestions: List[SuggestionItem] = Field(default_factory=list)
 
 
-class SpellCheckDataClass(BaseModel):
+class SpellCheckDataClass(NoRaiseBaseModel):
     """
     Represents a spell check model with a list of spell check items.
 

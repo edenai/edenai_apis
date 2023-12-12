@@ -1,16 +1,17 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import List, Optional
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class BoundixBoxOCRTable(BaseModel):
+class BoundixBoxOCRTable(NoRaiseBaseModel):
     left: Optional[float]
     top: Optional[float]
     width: Optional[float]
     height: Optional[float]
 
 
-class Cell(BaseModel):
+class Cell(NoRaiseBaseModel):
     text: Optional[StrictStr]
     row_index: Optional[int]
     col_index: Optional[int]
@@ -21,20 +22,20 @@ class Cell(BaseModel):
     is_header: bool = False
 
 
-class Row(BaseModel):
+class Row(NoRaiseBaseModel):
     cells: List[Cell] = Field(default_factory=list)
 
 
-class Table(BaseModel):
+class Table(NoRaiseBaseModel):
     rows: List[Row] = Field(default_factory=list)
     num_rows: Optional[int]
     num_cols: Optional[int]
 
 
-class Page(BaseModel):
+class Page(NoRaiseBaseModel):
     tables: List[Table] = Field(default_factory=list)
 
 
-class OcrTablesAsyncDataClass(BaseModel):
+class OcrTablesAsyncDataClass(NoRaiseBaseModel):
     pages: List[Page] = Field(default_factory=list)
     num_pages: Optional[int]

@@ -1,31 +1,32 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class UpperCloth(BaseModel):
+class UpperCloth(NoRaiseBaseModel):
     value: StrictStr
     confidence: float
 
 
-class LowerCloth(BaseModel):
+class LowerCloth(NoRaiseBaseModel):
     value: StrictStr
     confidence: float
 
 
-class PersonAttributes(BaseModel):
+class PersonAttributes(NoRaiseBaseModel):
     upper_cloths: Sequence[UpperCloth] = Field(default_factory=list)
     lower_cloths: Sequence[LowerCloth] = Field(default_factory=list)
 
 
-class VideoTrackingBoundingBox(BaseModel):
+class VideoTrackingBoundingBox(NoRaiseBaseModel):
     top: Optional[float]
     left: Optional[float]
     height: Optional[float]
     width: Optional[float]
 
 
-class PersonLandmarks(BaseModel):
+class PersonLandmarks(NoRaiseBaseModel):
     eye_left: Sequence[float] = Field(default_factory=list)
     eye_right: Sequence[float] = Field(default_factory=list)
     nose: Sequence[float] = Field(default_factory=list)
@@ -47,7 +48,7 @@ class PersonLandmarks(BaseModel):
     mouth_right: Sequence[float] = Field(default_factory=list)
 
 
-class VideoPersonPoses(BaseModel):
+class VideoPersonPoses(NoRaiseBaseModel):
     pitch: Optional[float]
     roll: Optional[float]
     yaw: Optional[float]
@@ -61,7 +62,7 @@ class VideoPersonPoses(BaseModel):
         )
 
 
-class VideoPersonQuality(BaseModel):
+class VideoPersonQuality(NoRaiseBaseModel):
     brightness: Optional[float]
     sharpness: Optional[float]
 
@@ -73,7 +74,7 @@ class VideoPersonQuality(BaseModel):
         )
 
 
-class PersonTracking(BaseModel):
+class PersonTracking(NoRaiseBaseModel):
     offset: float
     attributes: PersonAttributes = Field(default_factory=PersonAttributes)
     landmarks: PersonLandmarks = Field(default_factory=PersonLandmarks)
@@ -82,9 +83,9 @@ class PersonTracking(BaseModel):
     bounding_box: VideoTrackingBoundingBox
 
 
-class VideoTrackingPerson(BaseModel):
+class VideoTrackingPerson(NoRaiseBaseModel):
     tracked: Sequence[PersonTracking] = Field(default_factory=list)
 
 
-class PersonTrackingAsyncDataClass(BaseModel):
+class PersonTrackingAsyncDataClass(NoRaiseBaseModel):
     persons: Sequence[VideoTrackingPerson] = Field(default_factory=list)

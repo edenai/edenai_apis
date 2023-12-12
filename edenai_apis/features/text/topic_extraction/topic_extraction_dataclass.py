@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Sequence
 
 from pydantic import BaseModel, Field, field_validator
 
 
-class ExtractedTopic(BaseModel):
+class ExtractedTopic(NoRaiseBaseModel):
     category: str
     importance: float
 
@@ -27,5 +28,5 @@ class ExtractedTopic(BaseModel):
         return round(value, 2)
 
 
-class TopicExtractionDataClass(BaseModel):
+class TopicExtractionDataClass(NoRaiseBaseModel):
     items: Sequence[ExtractedTopic] = Field(default_factory=list)

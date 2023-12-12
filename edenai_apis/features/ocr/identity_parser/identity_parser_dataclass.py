@@ -1,3 +1,4 @@
+from utils.parsing import NoRaiseBaseModel
 import datetime
 import json
 import os
@@ -30,7 +31,7 @@ def format_date(value: Any) -> Union[str, None]:
     return value.strftime("%Y-%m-%d")
 
 
-class Country(BaseModel):
+class Country(NoRaiseBaseModel):
     name: Optional[StrictStr]
     alpha2: Optional[StrictStr]
     alpha3: Optional[StrictStr]
@@ -70,12 +71,12 @@ def get_info_country(key: InfoCountry, value: StrictStr) -> Optional[Country]:
     return None
 
 
-class ItemIdentityParserDataClass(BaseModel):
+class ItemIdentityParserDataClass(NoRaiseBaseModel):
     value: Optional[StrictStr] = None
     confidence: Optional[float] = None
 
 
-class InfosIdentityParserDataClass(BaseModel):
+class InfosIdentityParserDataClass(NoRaiseBaseModel):
     last_name: ItemIdentityParserDataClass
     given_names: List[ItemIdentityParserDataClass] = Field(default_factory=list)
     birth_place: ItemIdentityParserDataClass
@@ -140,5 +141,5 @@ class InfosIdentityParserDataClass(BaseModel):
         )
 
 
-class IdentityParserDataClass(BaseModel):
+class IdentityParserDataClass(NoRaiseBaseModel):
     extracted_data: Sequence[InfosIdentityParserDataClass] = Field(default_factory=list)

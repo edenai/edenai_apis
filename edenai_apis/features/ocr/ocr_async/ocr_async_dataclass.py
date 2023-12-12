@@ -1,7 +1,8 @@
 import enum
-from typing import List, Optional, Sequence, Callable
+from typing import Callable, Optional, Sequence, List
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import Field, field_validator
+from utils.parsing import NoRaiseBaseModel
 
 
 class BoundingBoxEnum(enum.Enum):
@@ -48,7 +49,7 @@ class CoordinateEnum(enum.Enum):
     Y = 1
 
 
-class BoundingBox(BaseModel):
+class BoundingBox(NoRaiseBaseModel):
     """Bounding box of a word in the image
 
 
@@ -152,7 +153,7 @@ class BoundingBox(BaseModel):
         return cls.from_json(boxes)
 
 
-class Word(BaseModel):
+class Word(NoRaiseBaseModel):
     """Word of a document
 
     Attributes:
@@ -175,7 +176,7 @@ class Word(BaseModel):
         return v
 
 
-class Line(BaseModel):
+class Line(NoRaiseBaseModel):
     """Line of a document
 
     Attributes:
@@ -201,7 +202,7 @@ class Line(BaseModel):
         return v
 
 
-class Page(BaseModel):
+class Page(NoRaiseBaseModel):
     """Page of a document
 
     Attributes:
@@ -211,7 +212,7 @@ class Page(BaseModel):
     lines: Sequence[Line] = Field(default_factory=list, description="List of lines")
 
 
-class OcrAsyncDataClass(BaseModel):
+class OcrAsyncDataClass(NoRaiseBaseModel):
     """OCR Async Data Class
 
     Attributes:

@@ -1,13 +1,14 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Dict, Optional, Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class CustomerInformation(BaseModel):
+class CustomerInformation(NoRaiseBaseModel):
     customer_name: Optional[StrictStr] = None
 
 
-class MerchantInformation(BaseModel):
+class MerchantInformation(NoRaiseBaseModel):
     merchant_name: Optional[StrictStr] = None
     merchant_address: Optional[StrictStr] = None
     merchant_phone: Optional[StrictStr] = None
@@ -19,7 +20,7 @@ class MerchantInformation(BaseModel):
     merchant_abn_number: Optional[StrictStr] = None
 
 
-class PaymentInformation(BaseModel):
+class PaymentInformation(NoRaiseBaseModel):
     card_type: Optional[StrictStr] = None
     card_number: Optional[StrictStr] = None
     cash: Optional[StrictStr] = None
@@ -28,30 +29,30 @@ class PaymentInformation(BaseModel):
     change: Optional[StrictStr] = None
 
 
-class Locale(BaseModel):
+class Locale(NoRaiseBaseModel):
     currency: Optional[StrictStr] = None
     language: Optional[StrictStr] = None
     country: Optional[StrictStr] = None
 
 
-class ItemLines(BaseModel):
+class ItemLines(NoRaiseBaseModel):
     description: Optional[str] = None
     quantity: Optional[float] = None
     amount: Optional[float] = None
     unit_price: Optional[float] = None
 
 
-class Taxes(BaseModel):
+class Taxes(NoRaiseBaseModel):
     taxes: Optional[float] = None
     rate: Optional[float] = None
 
 
-class BarCode(BaseModel):
+class BarCode(NoRaiseBaseModel):
     value: str
     type: str
 
 
-class InfosReceiptParserDataClass(BaseModel):
+class InfosReceiptParserDataClass(NoRaiseBaseModel):
     invoice_number: Optional[StrictStr] = None
     invoice_total: Optional[float] = None
     invoice_subtotal: Optional[float] = None
@@ -71,5 +72,5 @@ class InfosReceiptParserDataClass(BaseModel):
     item_lines: Sequence[ItemLines] = Field(default_factory=list)
 
 
-class ReceiptParserDataClass(BaseModel):
+class ReceiptParserDataClass(NoRaiseBaseModel):
     extracted_data: Sequence[InfosReceiptParserDataClass] = Field(default_factory=list)

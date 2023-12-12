@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class CustomerInformationInvoice(BaseModel):
+class CustomerInformationInvoice(NoRaiseBaseModel):
     customer_name: Optional[StrictStr]
     customer_address: Optional[StrictStr]  # Deprecated need to be removed
     customer_email: Optional[StrictStr]  # New
@@ -41,7 +42,7 @@ class CustomerInformationInvoice(BaseModel):
         )
 
 
-class MerchantInformationInvoice(BaseModel):
+class MerchantInformationInvoice(NoRaiseBaseModel):
     merchant_name: Optional[StrictStr]
     merchant_address: Optional[StrictStr]
     merchant_phone: Optional[StrictStr]  # New
@@ -75,7 +76,7 @@ class MerchantInformationInvoice(BaseModel):
         )
 
 
-class LocaleInvoice(BaseModel):
+class LocaleInvoice(NoRaiseBaseModel):
     currency: Optional[StrictStr]
     language: Optional[StrictStr]
 
@@ -84,7 +85,7 @@ class LocaleInvoice(BaseModel):
         return LocaleInvoice(currency=None, language=None)
 
 
-class ItemLinesInvoice(BaseModel):
+class ItemLinesInvoice(NoRaiseBaseModel):
     description: Optional[StrictStr] = None
     quantity: Optional[float] = None
     amount: Optional[float] = None
@@ -96,7 +97,7 @@ class ItemLinesInvoice(BaseModel):
     tax_rate: Optional[float] = None  # New
 
 
-class TaxesInvoice(BaseModel):
+class TaxesInvoice(NoRaiseBaseModel):
     value: Optional[float]
     rate: Optional[float]
 
@@ -105,7 +106,7 @@ class TaxesInvoice(BaseModel):
         return TaxesInvoice(value=None, rate=None)
 
 
-class BankInvoice(BaseModel):  # New obj
+class BankInvoice(NoRaiseBaseModel):  # New obj
     account_number: Optional[StrictStr]  # New
     iban: Optional[StrictStr]  # New
     bsb: Optional[StrictStr]  # New
@@ -127,7 +128,7 @@ class BankInvoice(BaseModel):  # New obj
         )
 
 
-class InfosInvoiceParserDataClass(BaseModel):
+class InfosInvoiceParserDataClass(NoRaiseBaseModel):
     customer_information: CustomerInformationInvoice = (
         CustomerInformationInvoice.default()
     )
@@ -161,5 +162,5 @@ class InfosInvoiceParserDataClass(BaseModel):
     item_lines: Sequence[ItemLinesInvoice] = Field(default_factory=list)
 
 
-class InvoiceParserDataClass(BaseModel):
+class InvoiceParserDataClass(NoRaiseBaseModel):
     extracted_data: Sequence[InfosInvoiceParserDataClass] = Field(default_factory=list)

@@ -1,22 +1,23 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field
 
 
-class VideoBoundingBox(BaseModel):
+class VideoBoundingBox(NoRaiseBaseModel):
     top: Optional[float]
     left: Optional[float]
     height: Optional[float]
     width: Optional[float]
 
 
-class VideoFacePoses(BaseModel):
+class VideoFacePoses(NoRaiseBaseModel):
     pitch: Optional[float]
     roll: Optional[float]
     yawn: Optional[float]
 
 
-class FaceAttributes(BaseModel):
+class FaceAttributes(NoRaiseBaseModel):
     headwear: Optional[float]
     frontal_gaze: Optional[float]
     eyes_visible: Optional[float]
@@ -28,7 +29,7 @@ class FaceAttributes(BaseModel):
     pose: VideoFacePoses
 
 
-class LandmarksVideo(BaseModel):
+class LandmarksVideo(NoRaiseBaseModel):
     eye_left: Sequence[float] = Field(default_factory=list)
     eye_right: Sequence[float] = Field(default_factory=list)
     nose: Sequence[float] = Field(default_factory=list)
@@ -36,12 +37,12 @@ class LandmarksVideo(BaseModel):
     mouth_right: Sequence[float] = Field(default_factory=list)
 
 
-class VideoFace(BaseModel):
+class VideoFace(NoRaiseBaseModel):
     offset: Optional[float]
     bounding_box: VideoBoundingBox
     attributes: FaceAttributes
     landmarks: LandmarksVideo
 
 
-class FaceDetectionAsyncDataClass(BaseModel):
+class FaceDetectionAsyncDataClass(NoRaiseBaseModel):
     faces: Sequence[VideoFace] = Field(default_factory=list)

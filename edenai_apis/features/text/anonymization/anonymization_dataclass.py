@@ -1,3 +1,4 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Dict, Optional, Sequence, Union
 from pydantic import BaseModel, ConfigDict, Field, FieldSerializationInfo, field_serializer, field_validator, model_validator
 
@@ -45,7 +46,7 @@ SubCategoryType = Union[
 ]
 
 
-class AnonymizationEntity(BaseModel):
+class AnonymizationEntity(NoRaiseBaseModel):
     """This model represents an entity extracted from the text.
 
     Attributes:
@@ -99,7 +100,7 @@ class AnonymizationEntity(BaseModel):
         return value.value
 
 
-class AnonymizationDataClass(BaseModel):
+class AnonymizationDataClass(NoRaiseBaseModel):
     """This model represents the response from the API.
 
     Attributes:

@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Dict
 
 from pydantic import BaseModel, StrictStr
 
 
-class DocumentTranslationDataClass(BaseModel):
+class DocumentTranslationDataClass(NoRaiseBaseModel):
     file: str
     document_resource_url: StrictStr
 

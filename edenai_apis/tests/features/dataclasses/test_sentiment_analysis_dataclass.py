@@ -80,6 +80,7 @@ class TestSegmentSentimentAnalysisDataClass:
                 sentiment="invalid sentiment",
                 sentiment_rate=0,
                 expected={
+                    'invalid_field': 'sentiment',
                     "raise_type": ValueError,
                     "raise_message": "Sentiment must be 'Positive' or 'Negative' or 'Neutral'",
                 },
@@ -89,7 +90,8 @@ class TestSegmentSentimentAnalysisDataClass:
                 sentiment=1,
                 sentiment_rate=0,
                 expected={
-                    "raise_type": TypeError,
+                    "invalid_field": 'sentiment',
+                    "raise_type": ValueError,
                     "raise_message": "Sentiment must be a string",
                 },
             ),
@@ -98,7 +100,8 @@ class TestSegmentSentimentAnalysisDataClass:
                 sentiment="Positive",
                 sentiment_rate=0,
                 expected={
-                    "raise_type": TypeError,
+                    "invalid_field": 'segment',
+                    "raise_type": ValueError,
                     "raise_message": "Segment must be a string",
                 },
             ),
@@ -107,32 +110,11 @@ class TestSegmentSentimentAnalysisDataClass:
                 sentiment=SentimentEnum.POSITIVE.value,
                 sentiment_rate="0",
                 expected={
-                    "raise_type": TypeError,
+                    'invalid_field': 'sentiment_rate',
+                    "raise_type": ValueError,
                     "raise_message": "Sentiment rate must be a float",
                 },
             ),
-            # _assign_markers_parametrize(
-            #     segment="Valid segment",
-            #     sentiment=SentimentEnum.POSITIVE.value,
-            #     sentiment_rate=-1,
-            #     expected={
-            #         "raise_type": ValidationError,
-            #         "raise_message": re.escape(
-            #             "1 validation error for SegmentSentimentAnalysisDataClass\nsentiment_rate\n)"
-            #         ),
-            #     },
-            # ),
-            # _assign_markers_parametrize(
-            #     segment="Valid segment",
-            #     sentiment=SentimentEnum.POSITIVE.value,
-            #     sentiment_rate=2,
-            #     expected={
-            #         "raise_type": ValidationError,
-            #         "raise_message": re.escape(
-            #             "1 validation error for SegmentSentimentAnalysisDataClass\nsentiment_rate\n)"
-            #         ),
-            #     },
-            # ),
         ],
         ids=[
             "test_with_bad_sentiment_format",
@@ -144,10 +126,8 @@ class TestSegmentSentimentAnalysisDataClass:
         ],
     )
     def test_invalid_input(self, kwargs, expected):
-        with pytest.raises(
-            (expected["raise_type"], ValidationError), match=expected["raise_message"]
-        ):
-            segment_sentiment_class = SegmentSentimentAnalysisDataClass(**kwargs)
+        segment_sentiment_class = SegmentSentimentAnalysisDataClass(**kwargs)
+        assert getattr(segment_sentiment_class, expected['invalid_field']) is None
 
 
 class TestSentimentAnalysisDataClass:

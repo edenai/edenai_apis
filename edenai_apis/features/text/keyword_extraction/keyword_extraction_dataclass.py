@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field, field_validator
 
 
-class InfosKeywordExtractionDataClass(BaseModel):
+class InfosKeywordExtractionDataClass(NoRaiseBaseModel):
     keyword: str
     importance: Optional[float]
 
@@ -14,5 +15,5 @@ class InfosKeywordExtractionDataClass(BaseModel):
         return value
 
 
-class KeywordExtractionDataClass(BaseModel):
+class KeywordExtractionDataClass(NoRaiseBaseModel):
     items: Sequence[InfosKeywordExtractionDataClass] = Field(default_factory=list)

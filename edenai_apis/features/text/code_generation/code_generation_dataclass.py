@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Dict
 
 from pydantic import BaseModel, StrictStr
 
 
-class CodeGenerationDataClass(BaseModel):
+class CodeGenerationDataClass(NoRaiseBaseModel):
     generated_text: StrictStr
 
     @staticmethod

@@ -1,25 +1,26 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class VideoObjectBoundingBox(BaseModel):
+class VideoObjectBoundingBox(NoRaiseBaseModel):
     top: Optional[float]
     left: Optional[float]
     height: Optional[float]
     width: Optional[float]
 
 
-class ObjectFrame(BaseModel):
+class ObjectFrame(NoRaiseBaseModel):
     timestamp: float
     bounding_box: VideoObjectBoundingBox
 
 
-class ObjectTrack(BaseModel):
+class ObjectTrack(NoRaiseBaseModel):
     description: StrictStr
     confidence: float
     frames: Sequence[ObjectFrame] = Field(default_factory=list)
 
 
-class ObjectTrackingAsyncDataClass(BaseModel):
+class ObjectTrackingAsyncDataClass(NoRaiseBaseModel):
     objects: Sequence[ObjectTrack] = Field(default_factory=list)

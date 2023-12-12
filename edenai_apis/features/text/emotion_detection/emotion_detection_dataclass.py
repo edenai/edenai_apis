@@ -1,3 +1,4 @@
+from utils.parsing import NoRaiseBaseModel
 from enum import Enum
 from typing import Sequence
 
@@ -18,7 +19,7 @@ class EmotionEnum(Enum):
         return cls[emotion.upper()].value
 
 
-class EmotionItem(BaseModel):
+class EmotionItem(NoRaiseBaseModel):
     """This class is used in EmotionAnalysisDataClass to list emotion analysed.
     Args:
         - emotion (EmotionEnum): emotion of the text
@@ -35,7 +36,7 @@ class EmotionItem(BaseModel):
         return v
 
 
-class EmotionDetectionDataClass(BaseModel):
+class EmotionDetectionDataClass(NoRaiseBaseModel):
     """This class is used to standardize the responses from emotion_detection.
     Args:
         - text (str) : The text analysed

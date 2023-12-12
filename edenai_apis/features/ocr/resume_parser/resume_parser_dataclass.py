@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class ResumeLocation(BaseModel):
+class ResumeLocation(NoRaiseBaseModel):
     formatted_location: Optional[StrictStr]  # Affinda ?
     postal_code: Optional[StrictStr]  # All
     region: Optional[StrictStr]  # All
@@ -16,17 +17,17 @@ class ResumeLocation(BaseModel):
     city: Optional[str]  # All
 
 
-class ResumeSkill(BaseModel):
+class ResumeSkill(NoRaiseBaseModel):
     name: StrictStr
     type: Optional[StrictStr]
 
 
-class ResumeLang(BaseModel):
+class ResumeLang(NoRaiseBaseModel):
     name: StrictStr
     code: Optional[StrictStr]
 
 
-class ResumeWorkExpEntry(BaseModel):
+class ResumeWorkExpEntry(NoRaiseBaseModel):
     title: Optional[StrictStr]
     start_date: Optional[StrictStr]
     end_date: Optional[StrictStr]
@@ -36,12 +37,12 @@ class ResumeWorkExpEntry(BaseModel):
     industry: Optional[StrictStr]  # Hireability
 
 
-class ResumeWorkExp(BaseModel):
+class ResumeWorkExp(NoRaiseBaseModel):
     total_years_experience: Optional[StrictStr]  # Affinda
     entries: Sequence[ResumeWorkExpEntry] = Field(default_factory=list)
 
 
-class ResumeEducationEntry(BaseModel):
+class ResumeEducationEntry(NoRaiseBaseModel):
     title: Optional[StrictStr]
     start_date: Optional[StrictStr]
     end_date: Optional[StrictStr]
@@ -52,12 +53,12 @@ class ResumeEducationEntry(BaseModel):
     accreditation: Optional[StrictStr]  # Affinda
 
 
-class ResumeEducation(BaseModel):
+class ResumeEducation(NoRaiseBaseModel):
     total_years_education: Optional[int]
     entries: Sequence[ResumeEducationEntry] = Field(default_factory=list)
 
 
-class ResumePersonalName(BaseModel):
+class ResumePersonalName(NoRaiseBaseModel):
     first_name: Optional[StrictStr]  # all
     last_name: Optional[StrictStr]  # all
     raw_name: Optional[StrictStr]  # all
@@ -67,7 +68,7 @@ class ResumePersonalName(BaseModel):
     sufix: Optional[StrictStr]  # Affinda
 
 
-class ResumePersonalInfo(BaseModel):
+class ResumePersonalInfo(NoRaiseBaseModel):
     name: ResumePersonalName
     address: ResumeLocation
     self_summary: Optional[StrictStr]  # all
@@ -85,7 +86,7 @@ class ResumePersonalInfo(BaseModel):
     current_salary: Optional[StrictStr]  # Hireability
 
 
-class ResumeExtractedData(BaseModel):
+class ResumeExtractedData(NoRaiseBaseModel):
     personal_infos: ResumePersonalInfo
     education: ResumeEducation
     work_experience: ResumeWorkExp
@@ -97,5 +98,5 @@ class ResumeExtractedData(BaseModel):
     interests: Sequence[ResumeSkill] = Field(default_factory=list)
 
 
-class ResumeParserDataClass(BaseModel):
+class ResumeParserDataClass(NoRaiseBaseModel):
     extracted_data: ResumeExtractedData

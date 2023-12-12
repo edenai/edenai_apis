@@ -1,16 +1,17 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import List, Optional
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class CustomDocumentParsingAsyncBoundingBox(BaseModel):
+class CustomDocumentParsingAsyncBoundingBox(NoRaiseBaseModel):
     left: Optional[float]
     top: Optional[float]
     width: Optional[float]
     height: Optional[float]
 
 
-class CustomDocumentParsingAsyncItem(BaseModel):
+class CustomDocumentParsingAsyncItem(NoRaiseBaseModel):
     confidence: float
     value: StrictStr
     query: StrictStr
@@ -18,5 +19,5 @@ class CustomDocumentParsingAsyncItem(BaseModel):
     page: int
 
 
-class CustomDocumentParsingAsyncDataClass(BaseModel):
+class CustomDocumentParsingAsyncDataClass(NoRaiseBaseModel):
     items: List[CustomDocumentParsingAsyncItem] = Field(default_factory=list)

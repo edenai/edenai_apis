@@ -1,22 +1,23 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class LogoVertice(BaseModel):
+class LogoVertice(NoRaiseBaseModel):
     x: Optional[float]
     y: Optional[float]
 
 
-class LogoBoundingPoly(BaseModel):
+class LogoBoundingPoly(NoRaiseBaseModel):
     vertices: Sequence[LogoVertice]
 
 
-class LogoItem(BaseModel):
+class LogoItem(NoRaiseBaseModel):
     bounding_poly: Optional[LogoBoundingPoly]
     description: Optional[StrictStr]
     score: Optional[float]
 
 
-class LogoDetectionDataClass(BaseModel):
+class LogoDetectionDataClass(NoRaiseBaseModel):
     items: Sequence[LogoItem] = Field(default_factory=list)

@@ -1,13 +1,14 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class InfosSearchDataClass(BaseModel):
+class InfosSearchDataClass(NoRaiseBaseModel):
     object: StrictStr
     document: int
     score: float
 
 
-class SearchDataClass(BaseModel):
+class SearchDataClass(NoRaiseBaseModel):
     items: Sequence[InfosSearchDataClass] = Field(default_factory=list)

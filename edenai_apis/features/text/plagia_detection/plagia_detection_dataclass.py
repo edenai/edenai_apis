@@ -1,10 +1,11 @@
+from utils.parsing import NoRaiseBaseModel
 
 from typing import Sequence
 
 from pydantic import BaseModel, Field, root_validator, field_validator
 
 
-class PlagiaDetectionCandidate(BaseModel):
+class PlagiaDetectionCandidate(NoRaiseBaseModel):
     url: str
     plagia_score: float
     prediction: str
@@ -26,11 +27,11 @@ class PlagiaDetectionCandidate(BaseModel):
             raise ValueError("Value should be between 0 and 1")
         return v
 
-class PlagiaDetectionItem(BaseModel):
+class PlagiaDetectionItem(NoRaiseBaseModel):
     text: str
     candidates: Sequence[PlagiaDetectionCandidate] = Field(default_factory=list)
 
 
-class PlagiaDetectionDataClass(BaseModel):
+class PlagiaDetectionDataClass(NoRaiseBaseModel):
     plagia_score : float
     items : Sequence[PlagiaDetectionItem] = Field(default_factory=list)

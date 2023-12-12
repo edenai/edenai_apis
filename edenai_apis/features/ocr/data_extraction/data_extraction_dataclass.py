@@ -1,3 +1,4 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Any, Sequence, Optional
 
 from pydantic import BaseModel, Field, field_validator
@@ -5,7 +6,7 @@ from pydantic import BaseModel, Field, field_validator
 from edenai_apis.utils.bounding_box import BoundingBox
 
 
-class ItemDataExtraction(BaseModel):
+class ItemDataExtraction(NoRaiseBaseModel):
     key: str
     value: Any
     bounding_box: BoundingBox
@@ -19,5 +20,5 @@ class ItemDataExtraction(BaseModel):
         return v
 
 
-class DataExtractionDataClass(BaseModel):
+class DataExtractionDataClass(NoRaiseBaseModel):
     fields: Sequence[ItemDataExtraction] = Field(default_factory=list)

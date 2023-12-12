@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Sequence, Optional
 
 from pydantic import BaseModel, Field, StrictStr, field_validator
 
 
-class InfosLanguageDetectionDataClass(BaseModel):
+class InfosLanguageDetectionDataClass(NoRaiseBaseModel):
     language: StrictStr
     display_name: StrictStr
     confidence: Optional[float]
@@ -16,5 +17,5 @@ class InfosLanguageDetectionDataClass(BaseModel):
         return round(value, 2)
 
 
-class LanguageDetectionDataClass(BaseModel):
+class LanguageDetectionDataClass(NoRaiseBaseModel):
     items: Sequence[InfosLanguageDetectionDataClass] = Field(default_factory=list)

@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field
 
 
-class MicrModel(BaseModel):
+class MicrModel(NoRaiseBaseModel):
     raw: Optional[str] = Field(...)
     account_number: Optional[str] = Field(...)
     routing_number: Optional[str] = Field(...)
@@ -11,7 +12,7 @@ class MicrModel(BaseModel):
     check_number: Optional[str] = Field(...)
 
 
-class ItemBankCheckParsingDataClass(BaseModel):
+class ItemBankCheckParsingDataClass(NoRaiseBaseModel):
     amount: Optional[float] = Field(...)
     amount_text: Optional[str] = Field(...)
     bank_address: Optional[str] = Field(...)
@@ -26,7 +27,7 @@ class ItemBankCheckParsingDataClass(BaseModel):
     micr: MicrModel = Field(...)
 
 
-class BankCheckParsingDataClass(BaseModel):
+class BankCheckParsingDataClass(NoRaiseBaseModel):
     extracted_data: Sequence[ItemBankCheckParsingDataClass] = Field(
         default_factory=list
     )

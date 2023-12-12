@@ -1,14 +1,15 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Dict, Generator, Optional, Sequence
 
 from pydantic import BaseModel, StrictStr, Field
 
 
-class ChatMessageDataClass(BaseModel):
+class ChatMessageDataClass(NoRaiseBaseModel):
     role: Optional[StrictStr]
     message: Optional[StrictStr]
 
 
-class ChatDataClass(BaseModel):
+class ChatDataClass(NoRaiseBaseModel):
     generated_text: StrictStr
     message: Sequence[ChatMessageDataClass] = Field(default_factory=list)
 
@@ -16,10 +17,10 @@ class ChatDataClass(BaseModel):
     def direct_response(api_response: Dict):
         return api_response["generated_text"]
 
-class ChatStreamResponse(BaseModel):
+class ChatStreamResponse(NoRaiseBaseModel):
     text: str
     blocked: bool
     provider: str
     
-class StreamChat(BaseModel):
+class StreamChat(NoRaiseBaseModel):
     stream: Generator[ChatStreamResponse, None, None]

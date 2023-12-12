@@ -1,9 +1,10 @@
+from utils.parsing import NoRaiseBaseModel
 from typing import Optional, Sequence
 
 from pydantic import BaseModel, Field, StrictStr
 
 
-class FaceLandmarks(BaseModel):
+class FaceLandmarks(NoRaiseBaseModel):
     left_eye: Sequence[float] = Field(default_factory=list)
     left_eye_top: Sequence[float] = Field(default_factory=list)
     left_eye_right: Sequence[float] = Field(default_factory=list)
@@ -58,7 +59,7 @@ class FaceLandmarks(BaseModel):
     right_cheek_center: Sequence[float] = Field(default_factory=list)
 
 
-class FaceEmotions(BaseModel):
+class FaceEmotions(NoRaiseBaseModel):
     joy: Optional[int]  # all
     sorrow: Optional[int]  # all
     anger: Optional[int]  # all
@@ -88,12 +89,12 @@ class FaceEmotions(BaseModel):
         )
 
 
-class FaceHairColor(BaseModel):
+class FaceHairColor(NoRaiseBaseModel):
     color: StrictStr
     confidence: float
 
 
-class FaceHair(BaseModel):
+class FaceHair(NoRaiseBaseModel):
     hair_color: Sequence[FaceHairColor] = Field(default_factory=list)  # microsoft
     bald: Optional[float]  # microsoft
     invisible: Optional[bool]  # microsoft
@@ -103,7 +104,7 @@ class FaceHair(BaseModel):
         return FaceHair(hair_color=[], bald=None, invisible=None)
 
 
-class FaceFacialHair(BaseModel):
+class FaceFacialHair(NoRaiseBaseModel):
     moustache: Optional[float]  # microsoft, amazon
     beard: Optional[float]  # microsoft, amazon
     sideburns: Optional[float]  # microsoft
@@ -113,7 +114,7 @@ class FaceFacialHair(BaseModel):
         return FaceFacialHair(moustache=None, beard=None, sideburns=None)
 
 
-class FaceBoundingBox(BaseModel):
+class FaceBoundingBox(NoRaiseBaseModel):
     x_min: Optional[float]
     x_max: Optional[float]
     y_min: Optional[float]
@@ -129,7 +130,7 @@ class FaceBoundingBox(BaseModel):
         )
 
 
-class FacePoses(BaseModel):
+class FacePoses(NoRaiseBaseModel):
     pitch: Optional[float]  # all
     roll: Optional[float]  # all
     yaw: Optional[float]  # all
@@ -139,7 +140,7 @@ class FacePoses(BaseModel):
         return FacePoses(pitch=None, roll=None, yaw=None)
 
 
-class FaceQuality(BaseModel):
+class FaceQuality(NoRaiseBaseModel):
     noise: Optional[float]  # microsoft
     exposure: Optional[float]  # microsoft
     blur: Optional[float]  # microsoft
@@ -157,7 +158,7 @@ class FaceQuality(BaseModel):
         )
 
 
-class FaceMakeup(BaseModel):
+class FaceMakeup(NoRaiseBaseModel):
     eye_make: Optional[bool]  # microsoft
     lip_make: Optional[bool]  # microsoft
 
@@ -166,7 +167,7 @@ class FaceMakeup(BaseModel):
         return FaceMakeup(eye_make=None, lip_make=None)
 
 
-class FaceFeatures(BaseModel):
+class FaceFeatures(NoRaiseBaseModel):
     eyes_open: Optional[float]  # amazon
     smile: Optional[float]  # amazon
     mouth_open: Optional[float]  # amazon
@@ -176,7 +177,7 @@ class FaceFeatures(BaseModel):
         return FaceFeatures(eyes_open=None, smile=None, mouth_open=None)
 
 
-class FaceAccessories(BaseModel):
+class FaceAccessories(NoRaiseBaseModel):
     sunglasses: Optional[float]  # microsoft, amazon
     reading_glasses: Optional[float]  # microsoft
     swimming_goggles: Optional[float]  # microsoft
@@ -196,7 +197,7 @@ class FaceAccessories(BaseModel):
         )
 
 
-class FaceOcclusions(BaseModel):
+class FaceOcclusions(NoRaiseBaseModel):
     eye_occluded: Optional[bool]  # microsoft
     forehead_occluded: Optional[bool]  # microsoft
     mouth_occluded: Optional[bool]  # microsoft
@@ -210,7 +211,7 @@ class FaceOcclusions(BaseModel):
         )
 
 
-class FaceItem(BaseModel):
+class FaceItem(NoRaiseBaseModel):
     confidence: float
     landmarks: FaceLandmarks
     emotions: FaceEmotions
@@ -227,5 +228,5 @@ class FaceItem(BaseModel):
     features: FaceFeatures
 
 
-class FaceDetectionDataClass(BaseModel):
+class FaceDetectionDataClass(NoRaiseBaseModel):
     items: Sequence[FaceItem] = Field(default_factory=list)

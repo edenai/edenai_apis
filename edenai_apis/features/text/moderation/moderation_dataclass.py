@@ -1,3 +1,4 @@
+from utils.parsing import NoRaiseBaseModel
 from enum import Enum
 from typing import Sequence, Union
 
@@ -35,7 +36,7 @@ class TextModerationCategoriesMicrosoftEnum(Enum):
     Category3 = "offensive"
 
 
-class TextModerationItem(BaseModel):
+class TextModerationItem(NoRaiseBaseModel):
     label: StrictStr
     likelihood: int
     category: CategoryType
@@ -47,7 +48,7 @@ class TextModerationItem(BaseModel):
     def serialize_subcategory(self, value: SubCategoryType, _: FieldSerializationInfo):
         return value.value
 
-class ModerationDataClass(BaseModel):
+class ModerationDataClass(NoRaiseBaseModel):
     nsfw_likelihood: int
     items: Sequence[TextModerationItem] = Field(default_factory=list)
     nsfw_likelihood_score : float
