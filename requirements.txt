@@ -25,7 +25,7 @@ amazon-textract-response-parser==0.1.48
     # via -r requirements.in
 annotated-types==0.5.0
     # via pydantic
-astroid==2.15.5
+astroid==3.0.2
     # via pylint
 async-timeout==4.0.3
     # via aiohttp
@@ -173,7 +173,7 @@ google-cloud-language==2.10.0
     # via -r requirements.in
 google-cloud-resource-manager==1.10.4
     # via google-cloud-aiplatform
-google-cloud-speech==2.21.0
+google-cloud-speech==2.20.0
     # via -r requirements.in
 google-cloud-storage==2.9.0
     # via
@@ -262,8 +262,6 @@ langcodes==3.3.0
     # via -r requirements.in
 language-data==1.1
     # via -r requirements.in
-lazy-object-proxy==1.9.0
-    # via astroid
 lettria==6.0.0
     # via -r requirements.in
 marisa-trie==0.7.8
@@ -409,7 +407,7 @@ pyjwt[crypto]==2.7.0
     #   ibm-cloud-sdk-core
     #   modernmt
     #   msal
-pylint==2.17.4
+pylint==3.0.3
     # via -r requirements.in
 pyopenssl==23.2.0
     # via watson-developer-cloud
@@ -582,8 +580,6 @@ watson-developer-cloud==2.0.0
     # via -r requirements.in
 websocket-client==1.1.0
     # via ibm-watson
-wrapt==1.15.0
-    # via astroid
 yarl==1.9.2
     # via aiohttp
 zipp==3.15.0
