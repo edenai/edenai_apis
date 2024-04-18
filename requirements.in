@@ -46,7 +46,7 @@ google-cloud-language==2.10.0
 google-cloud-speech==2.20.0
 google-cloud-storage==2.9.0
 google-cloud-texttospeech==2.14.1
-google-cloud-translate==3.11.1
+google-cloud-translate==3.14.0
 google-cloud-vision==3.4.2
 google-cloud-videointelligence==2.11.2
 google-cloud-automl==2.11.1

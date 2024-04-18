@@ -190,7 +190,7 @@ google-cloud-storage==2.9.0
     #   google-cloud-aiplatform
 google-cloud-texttospeech==2.14.1
     # via -r requirements.in
-google-cloud-translate==3.11.1
+google-cloud-translate==3.14.0
     # via -r requirements.in
 google-cloud-videointelligence==2.11.2
     # via -r requirements.in
