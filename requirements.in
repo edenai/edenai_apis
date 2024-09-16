@@ -5,7 +5,7 @@ pandas
 pdf2image
 pillow
 pycountry
-pydantic
+pydantic==2.8.2
 pylint
 mypy
 pydub
@@ -82,3 +82,4 @@ docstring_parser
 pymupdf
 
 asgiref
+
