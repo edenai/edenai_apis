@@ -5,7 +5,7 @@ pandas
 pdf2image
 pillow
 pycountry
-pydantic
+pydantic>=2.7
 pylint
 mypy
 pydub
