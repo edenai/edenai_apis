@@ -461,8 +461,9 @@ pygments==2.18.0
     #   furo
     #   rich
     #   sphinx
-pyjwt[crypto]==2.10.1
+pyjwt[crypto]==2.8.0
     # via
+    #   -r requirements.in
     #   ibm-cloud-sdk-core
     #   modernmt
     #   msal

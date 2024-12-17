@@ -12,6 +12,7 @@ pydub
 PyPDF
 sagemaker
 python-magic
+pyjwt==2.8
 
 #doc
 sphinx
