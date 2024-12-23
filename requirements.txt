@@ -259,8 +259,9 @@ httplib2==0.22.0
     # via
     #   google-api-python-client
     #   google-auth-httplib2
-httpx==0.28.1
+httpx==0.27.2
     # via
+    #   -r requirements.in
     #   anthropic-bedrock
     #   openai
 huggingface-hub==0.27.0
@@ -591,6 +592,7 @@ sniffio==1.3.1
     # via
     #   anthropic-bedrock
     #   anyio
+    #   httpx
     #   openai
 snowballstemmer==2.2.0
     # via sphinx

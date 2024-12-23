@@ -83,3 +83,5 @@ pymupdf
 
 asgiref
 jsonschema>=4.22
+
+httpx<0.28
