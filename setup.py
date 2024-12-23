@@ -6,7 +6,7 @@ with open('requirements.txt') as fp:
 
 setup(
     name='edenaiapis',
-    version='0.1.2',
+    version='0.1.3-RC1',
     description='Providers connectors',
     url='https://github.com/edenai/edenai-apis',
     author='Eden AI',

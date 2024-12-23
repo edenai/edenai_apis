@@ -23,7 +23,7 @@ psycopg2
 #test
 pytest-mock
 pytest-cov
-pytest==7.4.4
+pytest
 pytest-xdist
 pytest-timeout
 
@@ -35,31 +35,31 @@ amazon-textract-response-parser
 boto3==1.35.84
 
 #clarifai
-clarifai-grpc==9.10.7
+clarifai-grpc
 
 #google
 
-google-api-python-client==2.88.0
-google-cloud-documentai==2.15.0
-google-cloud-language==2.10.0
-google-cloud-speech==2.26.0
-google-cloud-storage==2.9.0
-google-cloud-texttospeech==2.14.1
-google-cloud-translate==3.11.1
-google-cloud-vision==3.4.2
-google-cloud-videointelligence==2.11.2
-google-cloud-automl==2.11.1
-google-cloud-aiplatform==1.35.0
+google-api-python-client
+google-cloud-documentai
+google-cloud-language
+google-cloud-speech
+google-cloud-storage
+google-cloud-texttospeech
+google-cloud-translate
+google-cloud-vision
+google-cloud-videointelligence
+google-cloud-automl
+google-cloud-aiplatform
 
 #ibm
 ibm-watson>=6.0.0
 watson-developer-cloud
 
 #lettria
-lettria==6.0.0
+lettria>=6.0.0
 
 #microsoft
-azure-ai-formrecognizer==3.3
+azure-ai-formrecognizer>=3.3
 azure-cognitiveservices-speech
 azure-core
 
@@ -68,14 +68,14 @@ modernmt
 aleph_alpha_client==6.0.0
 
 # openai
-openai==1.46.0
+openai
 
 python-dotenv
 
 # corticalio
-responses==0.24.1
+responses
 
-anthropic-bedrock==0.8.0
+anthropic-bedrock
 
 docstring_parser
 
