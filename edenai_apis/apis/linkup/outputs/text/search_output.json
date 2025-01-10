@@ -1,0 +1,66 @@
+{
+  "original_response": {
+    "answer": "Rome, founded in 753 B.C. by Romulus, is a city rich in history and culture. It boasts various transport options, including two airports: Fiumicino (FCO) and Ciampino (CIA). For travelers, public transport is advised due to the city\u2019s hilly terrain and heavy tourist traffic. Rome offers a multitude of attractions such as the Colosseum and Vatican, with numerous resources available for insights and travel tips.",
+    "sources": [
+      {
+        "name": "Rome guide - Rome travel guide",
+        "url": "https://www.travelplan.it/pdf/rome_guide.pdf",
+        "snippet": "The founding of Rome is enveloped in myth: the story goes that the first city center sprang up in 753 B.C. on the Palatine hill, built by Romulus after he had killed his twin brother Remus."
+      },
+      {
+        "name": "TRAVEL GUIDE MAGAZINE - mrdanielrowland.com",
+        "url": "https://mrdanielrowland.com/Travel_Guides_mrdanielrowland/ROME_Travel_Guide_free_with_maps.pdf",
+        "snippet": "Rome has two airports - Fiumicino (FCO) and Ciampino (CIA), but the main one is Leonardo da Vinci International Airport in Fiumicino."
+      },
+      {
+        "name": "ROME - Tripadvisor",
+        "url": "https://cdn.tripadvisor.com/pdfs/Guides/TA_Rome_Guide.pdf",
+        "snippet": "In addition to the best hotels, restaurants and attractions for every type of traveler, you\u2019ll get great advice about what to pack, how to get around and where to find the best views."
+      },
+      {
+        "name": "Rome - Monocle",
+        "url": "https://monocle.com/workspace/uploads/file/travel/v2_19_rome_web-pdf-58ada7aacf00a.pdf",
+        "snippet": "Seven Hills, Rome\u2019s pavements can be steep, slippery and choked with tourists so it\u2019s often best to get to grips with public transport."
+      },
+      {
+        "name": "Rome Travel Guide",
+        "url": "http://li.ijcaonline.org/About/browse/Documents/Rome%20Travel%20Guide.pdf",
+        "snippet": "Immerse yourself in the rich tapestry of Rome's enduring heritage as you follow insightful itineraries."
+      }
+    ]
+  },
+  "standardized_response": {
+    "results": [
+      {
+        "type": "text",
+        "name": "Rome guide - Rome travel guide",
+        "url": "https://www.travelplan.it/pdf/rome_guide.pdf",
+        "content": "The founding of Rome is enveloped in myth: the story goes that the first city center sprang up in 753 B.C. on the Palatine hill, built by Romulus after he had killed his twin brother Remus."
+      },
+      {
+        "type": "text",
+        "name": "TRAVEL GUIDE MAGAZINE - mrdanielrowland.com",
+        "url": "https://mrdanielrowland.com/Travel_Guides_mrdanielrowland/ROME_Travel_Guide_free_with_maps.pdf",
+        "content": "Rome has two airports - Fiumicino (FCO) and Ciampino (CIA), but the main one is Leonardo da Vinci International Airport in Fiumicino."
+      },
+      {
+        "type": "text",
+        "name": "ROME - Tripadvisor",
+        "url": "https://cdn.tripadvisor.com/pdfs/Guides/TA_Rome_Guide.pdf",
+        "content": "In addition to the best hotels, restaurants and attractions for every type of traveler, you\u2019ll get great advice about what to pack, how to get around and where to find the best views."
+      },
+      {
+        "type": "text",
+        "name": "Rome - Monocle",
+        "url": "https://monocle.com/workspace/uploads/file/travel/v2_19_rome_web-pdf-58ada7aacf00a.pdf",
+        "content": "Seven Hills, Rome\u2019s pavements can be steep, slippery and choked with tourists so it\u2019s often best to get to grips with public transport."
+      },
+      {
+        "type": "text",
+        "name": "Rome Travel Guide",
+        "url": "http://li.ijcaonline.org/About/browse/Documents/Rome%20Travel%20Guide.pdf",
+        "content": "Immerse yourself in the rich tapestry of Rome's enduring heritage as you follow insightful itineraries."
+      }
+    ]
+  }
+}

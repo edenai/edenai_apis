@@ -24,6 +24,7 @@ from .gladia import GladiaApi
 from .google import GoogleApi
 from .hireability import HireabilityApi
 from .klippa import KlippaApi
+from .linkup import LinkupApi
 from .lovoai import LovoaiApi
 from .meaningcloud import MeaningcloudApi
 from .meta import MetaApi
