@@ -117,8 +117,10 @@ You can create an account on [Eden AI](https://app.edenai.run/user/register?refe
 ## Join the community!
 Join our friendly community to improve your skills, focus on the integration of AI engines, get help to use Eden AI API and much more !
 
-[![](https://dcbadge.vercel.app/api/server/VYwTbMQc8u)](https://discord.com/invite/VYwTbMQc8u)
+[![Discord](https://dcbadge.vercel.app/api/server/VYwTbMQc8u)](https://discord.gg/VYwTbMQc8u)
 [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/edenai/) [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://edenai.medium.com/)
+
+
 
 ## License
 [Apache License 2.0](LICENSE)
