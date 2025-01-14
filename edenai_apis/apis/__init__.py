@@ -62,5 +62,6 @@ from .jina import JinaApi
 from .twelvelabs import TwelveLabsApi
 from .clipdrop import ClipdropApi
 from .leonardo import LeonardoApi
+from .picsart import PicsartApi
 
 # THIS NEEDS TO BE DONE AUTOMATICALLY

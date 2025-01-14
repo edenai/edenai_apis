@@ -252,6 +252,7 @@
 | | clipdrop |
 | | microsoft |
 | | photoroom |
+| | picsart |
 | | sentisight |
 | | stabilityai |
 | **generation_fine_tuning** | astria |
@@ -920,6 +921,13 @@
 |----------|-------------|
 | **image** | explicit_content |
 | | face_detection |
+
+</details>
+<details><summary>picsart</summary>
+
+| Features | Subfeatures |
+|----------|-------------|
+| **image** | background_removal |
 
 </details>
 <details><summary>privateai</summary>
