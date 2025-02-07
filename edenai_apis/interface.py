@@ -213,17 +213,17 @@ def compute_output(
         time.sleep(
             random.uniform(0.5, 1.5)
         )  # sleep to fake the response time from a provider
-        sample_args = load_feature(
-            FeatureDataEnum.SAMPLES_ARGS,
-            feature=feature,
-            subfeature=subfeature,
-            phase=phase,
-            provider_name=provider_name,
-        )
+        # sample_args = load_feature(
+        #     FeatureDataEnum.SAMPLES_ARGS,
+        #     feature=feature,
+        #     subfeature=subfeature,
+        #     phase=phase,
+        #     provider_name=provider_name,
+        # )
         # replace File Wrapper by file and file_url inputs and also transform input attributes as settings for tts
-        sample_args = validate_all_provider_constraints(
-            provider_name, feature, subfeature, phase, sample_args
-        )
+        # sample_args = validate_all_provider_constraints(
+        #     provider_name, feature, subfeature, phase, sample_args
+        # )
 
         # Return mocked results
         if is_async:
