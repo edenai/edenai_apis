@@ -1,9 +1,9 @@
 import json
+from typing import List, Dict
 from http import HTTPStatus
 from typing import Dict, Sequence, Any, Optional
-from uuid import uuid4
 import requests
-from edenai_apis.apis.winstonai.config import WINSTON_AI_API_URL
+from edenai_apis.apis.winstonai.config import WINSTON_AI_API_URL, WINSTON_AI_PLAGIA_DETECTION_URL
 from edenai_apis.features import ProviderInterface, TextInterface, ImageInterface
 from edenai_apis.features.image.ai_detection.ai_detection_dataclass import (
     AiDetectionDataClass as ImageAiDetectionDataclass,
@@ -34,6 +34,7 @@ class WinstonaiApi(ProviderInterface, TextInterface, ImageInterface):
             api_keys=api_keys or {},
         )
         self.api_url = WINSTON_AI_API_URL
+        self.plagia_url = WINSTON_AI_PLAGIA_DETECTION_URL
         self.headers = {
             "Content-Type": "application/json",
             "Authorization": f'Bearer {self.api_settings["api_key"]}',
@@ -135,40 +136,62 @@ class WinstonaiApi(ProviderInterface, TextInterface, ImageInterface):
             {
                 "text": text,
                 "language": provider_params.get("language", "en"),
-                "version": provider_params.get("version", "2.0"),
+                "country": provider_params.get("country", "us"),
+                "excluded_sources": provider_params.get("excluded_sources", [])
             }
         )
 
         response = requests.request(
-            "POST", f"{self.api_url}/plagiarism", headers=self.headers, data=payload
+            "POST", self.plagia_url, headers=self.headers, data=payload
         )
 
         if response.status_code != 200:
             raise ProviderException(response.json(), code=response.status_code)
 
         original_response = response.json()
-        results = original_response.get("results")
+        result = original_response.get("result")
 
-        if results is None:
+        if result is None:
             raise ProviderException(response.json())
+        
+        plagiarism_score: int = result.get("score")
+        sources = result.get("sources")
 
+        candidates: Sequence[PlagiaDetectionCandidate] = []
+
+        for source in sources:
+            source_url = source.get("url")
+            source_score = source.get("score")
+            source_prediction = 'plagiarized' if source_score > 5 else 'not plagiarized'
+            
+            # startIndex, endIndex, sequence
+            source_plagiarism_found: List[Dict[str, str]] = source.get("plagiarismFound")
+
+            plagiarized_text: str = ""
+
+            for plagiarism in source_plagiarism_found:
+                plagiarism_start_index = int(plagiarism.get("startIndex"))
+                plagiarism_end_index = int(plagiarism.get("endIndex"))
+
+                plagiarized_text += " ... " + text[plagiarism_start_index:plagiarism_end_index] + " ... "
+               
+
+            plagia_detection_candidate = PlagiaDetectionCandidate(
+                url=source_url,
+                plagia_score=source_score,
+                prediction=source_prediction,
+                plagiarized_text=plagiarized_text,
+                plagiarism_founds=source_plagiarism_found
+            )
+
+            candidates.append(plagia_detection_candidate)
+
+
+        plagia_detection_item = PlagiaDetectionItem(text=text, candidates=candidates)
+        
         standardized_response = PlagiaDetectionDataClass(
-            plagia_score=original_response["score"],
-            items=[
-                PlagiaDetectionItem(
-                    text=result["title"],
-                    candidates=[
-                        PlagiaDetectionCandidate(
-                            url=result["url"],
-                            plagia_score=1,
-                            prediction="plagiarized",
-                            plagiarized_text=excerpt,
-                        )
-                        for excerpt in result["excerpts"]
-                    ],
-                )
-                for result in results
-            ],
+            plagia_score=plagiarism_score,
+            items=[plagia_detection_item]
         )
 
         return ResponseType[PlagiaDetectionDataClass](
