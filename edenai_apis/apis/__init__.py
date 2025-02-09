@@ -27,6 +27,7 @@ from .hireability import HireabilityApi
 from .ibm import IbmApi
 from .jina import JinaApi
 from .klippa import KlippaApi
+from .linkup import LinkupApi
 from .leonardo import LeonardoApi
 from .lovoai import LovoaiApi
 from .meaningcloud import MeaningcloudApi

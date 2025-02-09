@@ -1,0 +1,11 @@
+{
+    "text": {
+        "search": {
+            "version": "v1.0",
+            "constraints": {
+                "depth": ["standard", "deep"],
+                "outputType": ["searchResults", "sourcedAnswer"]
+            }
+        }
+    }
+}
