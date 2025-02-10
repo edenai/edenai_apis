@@ -1,0 +1,11 @@
+{
+    "text": {
+        "chat": {
+            "constraints": {
+                "models": [],
+                "default_model": ""
+            },
+            "version": "v1"
+        }
+    }
+}

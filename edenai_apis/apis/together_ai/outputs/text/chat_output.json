@@ -1,0 +1,43 @@
+{
+  "original_response": {
+    "id": "9099c6d5b951e177",
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "logprobs": null,
+        "message": {
+          "content": "barack obama, united states, president, democratic party, illinois, senator",
+          "role": "assistant",
+          "tool_calls": []
+        }
+      }
+    ],
+    "created": 1738159524,
+    "model": "together_ai/snowflake/snowflake-arctic-instruct",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 18,
+      "prompt_tokens": 213,
+      "total_tokens": 231
+    },
+    "prompt": []
+  },
+  "standardized_response": {
+    "generated_text": "barack obama, united states, president, democratic party, illinois, senator",
+    "message": [
+      {
+        "role": "user",
+        "message": "Barack Hussein Obama is an American politician who served as the 44th president of the United States from 2009 to 2017. A member of the Democratic Party, Obama was the first African-American president of the United States. He previously served as a U.S. senator from Illinois from 2005 to 2008 and as an Illinois state senator from 1997 to 2004.",
+        "tools": null,
+        "tool_calls": null
+      },
+      {
+        "role": "assistant",
+        "message": "barack obama, united states, president, democratic party, illinois, senator",
+        "tools": null,
+        "tool_calls": []
+      }
+    ]
+  }
+}

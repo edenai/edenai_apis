@@ -4,6 +4,7 @@ import asyncio
 import os
 from time import sleep
 from typing import Dict, List, Literal, Optional, Sequence, Union
+from edenai_apis.apis.openai.helpers import construct_prompt_optimization_instruction
 from edenai_apis.features.text.chat.helpers import get_tool_call_from_history_by_id
 
 from openai import OpenAI
@@ -563,7 +564,7 @@ class XAiTextApi(TextInterface):
         temperature: float,
         max_tokens: int,
         model: str,
-        stream=False,
+        stream: bool=False,
         available_tools: Optional[List[dict]] = None,
         tool_choice: Literal["auto", "required", "none"] = "auto",
         tool_results: Optional[List[dict]] = None,
